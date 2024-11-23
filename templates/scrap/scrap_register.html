@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<title>Agent Register</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{% static 'sign/images/icons/favicon.ico' %}" />
+
+	<!-- Embedded CSS -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.container-login100 {
+			background: linear-gradient(to bottom right, black, #626262);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			width: 100%;
+			padding: 0 20px;
+		}
+
+		.wrap-login100 {
+			background-color: #ffffff;
+			border-radius: 8px;
+			padding: 30px;
+			width: 100%;
+			max-width: 430px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.login100-form-title {
+			font-size: 28px;
+			color: #232836;
+			font-weight: 600;
+			text-align: center;
+			margin: 0 0 20px 0;
+		}
+
+		.input100 {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #CACACA;
+			border-radius: 6px;
+			font-size: 16px;
+			outline: none;
+			margin-bottom: 15px;
+			transition: border-color 0.3s;
+			background-color: rgb(238, 235, 233);
+		}
+
+		.input100:focus {
+			border-color: #0171d3;
+		}
+
+		.login100-form-btn {
+			background-color: #4a4a4a;
+			color: #ffffff;
+			font-size: 16px;
+			padding: 12px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			width: 100%;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.login100-form-btn:hover {
+			background-color: #636363;
+		}
+
+		.txt1 {
+			font-size: 16px;
+			color: #000000;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		.txt3 {
+			font-size: 14px;
+			font-weight: 700;
+			color: #3b3f3f;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+		}
+
+		.txt3:hover {
+			text-decoration: none;
+			color: #91bae3;
+		}
+
+		.flex-col-c {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.flex-col-c .txt1 {
+			margin-bottom: 5px;
+		}
+
+		@media (max-width: 430px) {
+			.wrap-login100 {
+				padding: 20px 15px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	{% for m in messages %}
+	<script>alert('{{ m }}')</script>
+	{% endfor %}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form action="/scrap_register/" method="POST" class="login100-form validate-form">
+					{% csrf_token %}
+					<h2 class="login100-form-title">Register</h2>
+
+					<div class="wrap-input100 validate-input" data-validate="Please enter username">
+						<input class="input100" type="text" name="username" placeholder="Username">
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter email">
+						<input class="input100" type="email" name="email" placeholder="Email">
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter phone number">
+						<input class="input100" type="text" name="contact" placeholder="Phone Number">
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter date of birth">
+						<input class="input100" type="text" name="dob" placeholder="Date Of Birth">
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter place">
+						<input class="input100" type="text" name="address" placeholder="Place">
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter password">
+						<input class="input100" type="password" name="password" placeholder="Password">
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">Sign up</button>
+					</div>
+
+					<div class="flex-col-c p-t-10 p-b-40">
+						<span class="txt1">Do you have an account?</span>
+						<a href="/scrap_login/" class="txt3">Login now</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

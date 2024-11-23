@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<title>Login V8</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{% static 'sign/images/icons/favicon.ico' %}" />
+
+	<!-- Embedded CSS -->
+	<style>
+		/* Google Fonts */
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+		/* Resetting general styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		/* Main container style for the form */
+		.container-login100 {
+			background: linear-gradient(to bottom right, black, #626262);
+			/* Changed to linear gradient */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			width: 100%;
+			padding: 0 20px;
+		}
+
+		/* Wrap form */
+		.wrap-login100 {
+			background-color: #ffffff;
+			/* White background for the form */
+			border-radius: 8px;
+			padding: 30px;
+			width: 100%;
+			max-width: 430px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		/* Form title */
+		.login100-form-title {
+			font-size: 28px;
+			color: #232836;
+			/* Dark text */
+			font-weight: 600;
+			text-align: center;
+			/* Centering the heading */
+			margin: 0 0 20px 0;
+			/* Added margin to top and bottom */
+		}
+
+		/* Input fields */
+		.input100 {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #CACACA;
+			/* Light grey border */
+			border-radius: 6px;
+			font-size: 16px;
+			outline: none;
+			margin-bottom: 15px;
+			/* Space below input fields */
+			transition: border-color 0.3s;
+			background-color: rgb(238, 235, 233);
+		}
+
+		/* Change border color on focus */
+		.input100:focus {
+			border-color: #0171d3;
+			/* Change to blue on focus */
+		}
+
+		/* Submit button */
+		.login100-form-btn {
+			background-color: #4a4a4a;
+			/* Dark grey button */
+			color: #ffffff;
+			/* White text */
+			font-size: 16px;
+			padding: 12px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			width: 100%;
+			text-align: center;
+			margin-bottom: 20px;
+			/* Space below the button */
+		}
+
+		.login100-form-btn:hover {
+			background-color: #636363;
+			/* Light grey on hover */
+		}
+
+		/* Sign up link and Home link */
+		.txt1 {
+			font-size: 16px;
+
+			color: #000000;
+			/* Dark text */
+			text-align: center;
+			/* Centering the text */
+			margin-bottom: 10px;
+			/* Space below the text */
+		}
+
+		.txt3 {
+			font-size: 14px;
+			font-weight: 700;
+			color: #3b3f3f;
+			/* Blue link */
+
+			text-align: center;
+			/* Centering the link */
+			text-decoration: none;
+			display: inline-block;
+		}
+
+		.txt3:hover {
+			text-decoration: none;
+			color: #91bae3;
+			/* Darker blue on hover */
+		}
+
+		/* Flex column adjustments */
+		.flex-col-c {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.flex-col-c .txt1 {
+			margin-bottom: 5px;
+		}
+
+		/* Add spacing above the Home link section */
+		.flex-col-c.p-t-10 {
+			margin-top: 20px;
+			/* Adjust this value for more or less space */
+		}
+
+		/* Additional media queries for responsiveness */
+		@media (max-width: 430px) {
+			.wrap-login100 {
+				padding: 20px 15px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	{% for m in messages %}
+	<script>
+		alert('{{ m }}')
+	</script>
+	{% endfor %}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form action="/scrap_login/" method="POST" class="login100-form validate-form">
+					{% csrf_token %}
+					<h2 class="login100-form-title" class="headng1">
+						Sign In
+					</h2>
+
+					<div class="wrap-input100 validate-input" data-validate="Please enter username">
+						<input class="input100" type="text" name="email" placeholder="Email">
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Please enter password">
+						<input class="input100" type="password" name="password" placeholder="Password">
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Sign in
+						</button>
+					</div>
+
+					<div class="flex-col-c p-t-25 p-b-40">
+						<span class="txt1">
+							Don’t have an account?
+						</span>
+						<a href="/scrap_register/" class="txt3">
+							Sign up now
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-10 p-b-40">
+						<span class="txt1">
+							Click Here for Home
+						</span>
+						<a href="/" class="txt3">
+							Home
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Import scripts -->
+	<script src="{% static 'sign/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'sign/vendor/animsition/js/animsition.min.js' %}"></script>
+	<script src="{% static 'sign/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'sign/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'sign/vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'sign/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'sign/vendor/daterangepicker/daterangepicker.js' %}"></script>
+	<script src="{% static 'sign/vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'sign/js/main.js' %}"></script>
+
+</body>
+
+</html>
